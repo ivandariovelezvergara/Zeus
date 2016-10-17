@@ -1,0 +1,280 @@
+﻿@model ZeusWeb.Models.MenuModels
+
+@{
+    ViewBag.Title = "Menu";
+}
+<link href="~/css/Menu.css" rel="stylesheet" />
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/font-awesome.css" rel="stylesheet" />
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href="~/css/MenuStyle.css" rel="stylesheet" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btn-submit').submit(function () {
+            if ($(this).valid()) {
+                $.ajax({
+                    url: "/Menu/saveData",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (response) {
+                        alert("error");
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+
+<div style="background-color:#0083EE;">
+
+    <h1 class="funny-title section-title">Zeus</h1>
+
+    <div style="padding-bottom:50px; width:100%; height: 150px; text-align:center;">
+
+        <div id="pattern" class="pattern">
+
+            <div id="navigation-bar" class="navigation-bar">
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hover ehover1">
+                        <img class="img-responsive" src="~/img/Naturaleza.jpg" alt="">
+                        <div class="overlay">
+                            <h2>CREAR USUARIO</h2>
+                            <button class="info" data-toggle="modal" id="navbox-trigger" data-target="#modal1">
+                                CREAR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hover ehover1">
+                        <img class="img-responsive" src="~/img/Bosque.jpg" alt="">
+                        <div class="overlay">
+                            <h2>ACTUALIZAR INFORMACIÓN</h2>
+                            <button class="info" data-toggle="modal" id="imgActualizar" data-target="#modal1">
+                               ACTUALIZAR
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hover ehover1">
+                        <img class="img-responsive" src="~/img/Lago.jpg" alt="">
+                        <div class="overlay">
+                            <h2>MAPA</h2>
+                            <button class="info" data-toggle="modal" id="imgMapa" data-target="#modal1">
+                                VER
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hover ehover1">
+                        <img class="img-responsive" src="~/img/Uvas.jpg" alt="">
+                        <div class="overlay">
+                            <h2>REPORTES</h2>
+                            <button class="info" data-toggle="modal" data-target="#modal1">
+                                CONSULTAR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+              
+                <div id="divActualizar" class="navbox">
+                    <div id="formulario" style="text-align:center;">
+                        <div class="contact">
+                            <div class="contenedor-formulario">
+                                @using (Html.BeginForm("saveData", "Menu", FormMethod.Post, new { @name = "formularioCrear", @class = "formulario", enctype = "multipart/form-data" }))
+                                {
+                                <div class="wrap">
+                                    <div>
+                                        <div style="width:100%; padding-top:40px;">
+                                            <div class="input-group">
+                                                <input type="image" id="image" style="width:180px; height:180px; background-color:#D2D8FF; border-radius: 100px; padding: 3px; border:none;">
+                                            </div>
+                                        </div>
+                                        <div id="buscar" class="input-group" style="width:50%; margin-bottom:0px;">
+                                            <span id="filename">Sube tu foto</span>
+                                            <label id="Buscar" for="foto" style="color:white">Buscar @Html.TextBoxFor(m => m.foto, new { type = "file", id = "foto" })</label>
+                                        </div>
+                                        <div style="width:100%; margin-top:10px;">
+                                            <div class="input-group">
+                                                <input type="text" id="login" name="login">
+                                                <label class="label" for="login">Usuario:</label>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;">
+                                            <div class="input-group">
+                                                <input type="text" id="nombres" name="nombres">
+                                                <label class="label" for="nombre">Nombres:</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" id="apellidos" name="apellidos">
+                                                <label class="label" for="apellidos">Apellidos:</label>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;">
+                                            <div class="input-group">
+                                                <input type="email" id="correo" name="correo">
+                                                <label class="label" for="correo">Correo:</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" id="identificacion" name="identificacion">
+                                                <label class="label" for="identificacion">Identificación:</label>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;">
+                                            <div class="input-group">
+                                                <input type="text" id="telefono" name="telefono">
+                                                <label class="label" for="telefono">Teléfono:</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" id="celular" name="celular">
+                                                <label class="label" for="celular">Celular:</label>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;">
+                                            <div class="input-group">
+                                                <input type="text" id="direccion" name="direccion">
+                                                <label class="label" for="direccion">Dirección:</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="datepicker">
+                                                <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="password" id="pass" name="pass">
+                                            <label class="label" for="pass">Contraseña:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="password" id="repPass" name="repPass">
+                                            <label class="label" for="pass2">Repetir Contraseña:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="cargo" name="cargo">
+                                            <label class="label" for="cargo">Cargo:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="salario" name="salario">
+                                            <label class="label" for="salario">Salario:</label>
+                                        </div>
+                                        <div style="width:100%;">
+                                            <div class="input-group">
+                                                <div class="styled-select blue semi-square" style="margin-top: 10px;">
+                                                    <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="grupo">Grupo:</label>
+                                                    <select name="grupo" id="grupo">
+                                                        <option value="1">Empleado</option>
+                                                        <option value="2">Nada</option>
+                                                        <option value="3">Pirobo Master</option>
+                                                        <option value="4">Supervisor</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="styled-select blue semi-square" style="margin-top: 10px;">
+                                                    <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="departamento">Departamento:</label>
+                                                    <select name="departamento" id="departamento">
+                                                        <option value="1">Produccion</option>
+                                                        <option value="2">Encargados</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="input-group radio">
+                                            <input type="radio" name="sexo" id="hombre" value="Hombre">
+                                            <label for="hombre">Hombre</label>
+                                            <input type="radio" name="sexo" id="mujer" value="Mujer">
+                                            <label for="mujer">Mujer</label>
+                                        </div>
+                                        <div class="input-group checkbox">
+                                            <input type="checkbox" name="terminos" id="terminos" value="true">
+                                            <label for="terminos">Acepto los Terminos y Condiciones</label>
+                                        </div>*@
+
+                                        <input type="submit" id="btn-submit" value="Enviar" style="margin-bottom: 20px;">
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="searchResults">
+                    
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Menu/Menu.js"></script>
+
+
+<script type="text/javascript">
+    var url = '@Url.Action("Mostrar", "Actualizar")';
+    $('#imgActualizar').click(function () {
+        //var keyWord = $('#Keyword').val();
+        $('#searchResults').load(url);
+    })
+</script>
+
+<script type="text/javascript">
+    var urlMapa = '@Url.Action("Index", "Coordenadas")';
+    $('#imgMapa').click(function () {
+        window.open(urlMapa, '_blank');
+    })
+</script>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#mylink').click(function () {
+            $('#ToDisplayResult').load(this.href);
+            return false;
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $('#foto').change(function () {
+        var filepath = this.value;
+        var m = filepath.match(/([^\/\\]+)$/);
+        var filename = m[1];
+        $('#filename').html(filename);
+        readURL(this);
+    });
+
+</script>
+
+@*<form action="~/Account/VerificarLogin" method="POST">
+    <input type="submit" name="submitButton" value="Iniciar sesion" class="btn btn-primary btn-lg" style="width: 15%; background-color:#25426b" />
+</form>*@

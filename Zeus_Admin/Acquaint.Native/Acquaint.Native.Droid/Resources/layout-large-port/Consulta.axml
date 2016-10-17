@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dip"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="50dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="65.0dp"
+            android:text="Empleado"
+            android:textSize="26dp" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="32.5dp" />
+        <FrameLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_Fecha_Inicial"
+            android:layout_marginBottom="5dp" />
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtHora"
+                android:layout_marginTop="5dp"
+                android:hint="Hora"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/btnFechaInicial"
+                android:layout_width="30.0dp"
+                android:layout_height="30.0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/clockButton"
+                android:layout_marginLeft="20.0dp" />
+        </LinearLayout>
+        <FrameLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_Fecha_Final"
+            android:layout_marginBottom="5dp" />
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtHoraFin"
+                android:layout_marginTop="5dp"
+                android:hint="Hora"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/btnFechaFinal"
+                android:layout_width="30.0dp"
+                android:layout_height="30.0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/clockButton"
+                android:layout_marginLeft="20.0dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="199.5dp"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="15.0dp"
+            android:textSize="20dp"
+            android:background="@drawable/button_color" />
+    </LinearLayout>
+</RelativeLayout>

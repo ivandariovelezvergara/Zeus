@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+
+  <resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+	<dimen name="TextSizeLeyendaS">8dp</dimen>
+	<dimen name="WidthLeyendaS">20dp</dimen>
+	<dimen name="HeightLeyendaS">10dp</dimen>
+	<dimen name="TopLeyendaS">0dp</dimen>
+	<dimen name="TextSizeLeyendaSmall">9dp</dimen>
+	<dimen name="WidthLeyendaSmall">22dp</dimen>
+	<dimen name="HeightLeyendaSmall">11dp</dimen>
+	<dimen name="TopLeyendaSmall">0dp</dimen>
+	<dimen name="TextSizeLeyendaNormal">9dp</dimen>
+	<dimen name="WidthLeyendaNormal">23dp</dimen>
+	<dimen name="HeightLeyendaNormal">11.5dp</dimen>
+	<dimen name="TopLeyendaNormal">0dp</dimen>
+	<dimen name="TextSizeLeyendaLarge">13dp</dimen>
+	<dimen name="WidthLeyendaLarge">35dp</dimen>
+	<dimen name="HeightLeyendaLarge">15dp</dimen>
+	<dimen name="TopLeyendaLarge">0dp</dimen>
+	<dimen name="TextSizeLeyendaXLarge">18dp</dimen>
+	<dimen name="WidthLeyendaXLarge">55dp</dimen>
+	<dimen name="HeightLeyendaXLarge">25dp</dimen>
+	<dimen name="TopLeyendaXLarge">0dp</dimen>
+	<dimen name="TextSizeConsultaLarge">22dp</dimen>
+	<dimen name="TextSizeConsultaSmall">14dp</dimen>
+	<dimen name="TextSizeConsultaNormal">16dp</dimen>
+	<dimen name="TextSizeConsultaXLarge">25dp</dimen>
+  </resources>
+

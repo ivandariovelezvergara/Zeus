@@ -1,0 +1,148 @@
+﻿   <!-- row -->
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <select class="form-control" ng-options="a as 'AÑO: ' + a.nombre for a in objetos.anio.lista" ng-model="objetos.anio.activo"></select>
+        <br />
+        <input type="text" class="form-control" placeholder="Filtrar Sucursal" ng-model="objetos.centrocosto.filtro.texto"/>
+        <br />
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget sample-show-hide" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" ng-repeat="cc in objetos.centrocosto.lista|filter:objetos.centrocosto.filtro.texto">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+        -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-signal"></i> </span>
+                <h2>{{cc.descripcion}} </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget content -->
+                <div class="widget-body">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">MES</th>
+                                <th class="text-center" ng-repeat="cl in objetos.calculo.lista">{{cl.nombre}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="m in objetos.mes.lista">
+                                <td>{{m.nombre}}</td>
+                                <td ng-repeat="cl in objetos.calculo.lista" class="text-center">{{objetos.datos.getDato(objetos.anio.activo.nombre,m.nombre,cc.descripcion,cl.nombre)}} %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+
+    </article>
+    <!-- WIDGET END -->
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+        -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-signal"></i> </span>
+                <h2>Calculo </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget content -->
+                <div class="widget-body">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th colspan="2">A PARTIR DE NOVIEMBRE DE 2014 INDICADOR DE GESTION INV</th>
+                          </tr>
+                          <tr>
+                            <th colspan="2">BASE CALCULO META: AL PROMEDIO DE LOS TRES ANTEPENULTIMOS MESESE, MULTIPLICADO POR EL % DE MEJORA.</th>
+                          </tr>
+                          <tr>
+                              <th>RANGO</th><th>LA META DE MEJORA</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>0% A 0.99%</td>
+                              <td>0%</td>
+                          </tr>
+                          <tr>
+                              <td>1% A 1.99%</td>
+                              <td>10%</td>
+                          </tr>
+                          <tr>
+                              <td>2% A 2.99%</td>
+                              <td>15%</td>
+                          </tr>
+                          <tr>
+                              <td>3% A 3.99%</td>
+                              <td>30%</td>
+                          </tr>
+                          <tr>
+                              <td>4% > </td>
+                              <td>40%</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+
+    
+
+
+</div>
+
+
+
+<!-- end row -->

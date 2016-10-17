@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusServices", "ZeusServices\ZeusServices.csproj", "{877927B7-36D8-43AF-A3FF-C555BAE8C52D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{877927B7-36D8-43AF-A3FF-C555BAE8C52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{877927B7-36D8-43AF-A3FF-C555BAE8C52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{877927B7-36D8-43AF-A3FF-C555BAE8C52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{877927B7-36D8-43AF-A3FF-C555BAE8C52D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://proyectosbryan.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ZeusServices\\ZeusServices.csproj
+		SccProjectName1 = ZeusServices
+		SccLocalPath1 = ZeusServices
+	EndGlobalSection
+EndGlobal

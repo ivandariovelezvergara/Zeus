@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tableLayout1"
+    android:background="@android:color/black"
+    android:alpha="0.8">
+    <TableRow
+        android:id="@+id/FilaUnmo"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/flechasleyendapurpura"
+            android:layout_column="0"
+            android:id="@+id/FlechaUno"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge" />
+        <TextView
+            android:id="@+id/TextUno"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="0 km/h a 0.9 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+        <ImageView
+            android:src="@drawable/flechasleyendaazuloscuro"
+            android:id="@+id/FlechaDos"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge"
+            android:layout_marginBottom="3.0dp" />
+        <TextView
+            android:id="@+id/TextDos"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="1 km/h a 10 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+        <ImageView
+            android:src="@drawable/flechasleyendaazul"
+            android:id="@+id/FlechaTres"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge" />
+        <TextView
+            android:id="@+id/TextTres"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="11 km/h a 40 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/FilaDos"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/flechasleyendaverde"
+            android:id="@+id/FlechaCuatro"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge" />
+        <TextView
+            android:id="@+id/TextCuatro"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="41 km/h a 70 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+        <ImageView
+            android:src="@drawable/flechasleyendarosada"
+            android:id="@+id/FlechaCinco"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge" />
+        <TextView
+            android:id="@+id/TextCinco"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="71 km/h a 90 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+        <ImageView
+            android:src="@drawable/flechasleyendaanaranjada"
+            android:id="@+id/FlechaSeis"
+            android:layout_width="@dimen/WidthLeyendaLarge"
+            android:layout_height="@dimen/HeightLeyendaLarge" />
+        <TextView
+            android:id="@+id/TextSeis"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/TextSizeLeyendaLarge"
+            android:text="mayor a 90 km/h"
+            android:layout_marginTop="@dimen/TopLeyendaLarge" />
+    </TableRow>
+</TableLayout>

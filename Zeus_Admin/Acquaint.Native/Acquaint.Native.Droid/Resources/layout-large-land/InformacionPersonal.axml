@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:background="@color/window_background"
+        android:layout_height="fill_parent"
+        android:minWidth="25dp"
+        android:minHeight="25dp">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:id="@+id/ImagenPerfil"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_frame"
+            android:layout_gravity="center" />
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center">
+            <Button
+                android:text="Tareas"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/TareasPersonal"
+                android:textSize="20dp"
+                android:background="@drawable/buttoncolorinf" />
+            <Button
+                android:text="Ubicacion"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="160dp"
+                android:id="@+id/UbicacionPersonal"
+                android:textSize="20dp"
+                android:background="@drawable/buttoncolorinf" />
+            <Button
+                android:text="mensajeria"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="315dp"
+                android:id="@+id/MensajeriaPersonal"
+                android:textSize="20dp"
+                android:background="@drawable/buttoncolorinf" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp">
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_width="370dp"
+                android:layout_marginLeft="20dp">
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content">
+                    <TextView
+                        android:text="Nombres: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Nombres: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="190dp"
+                        android:id="@+id/Nombre"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        android:text="Apellidos: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Apellidos: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="190dp"
+                        android:id="@+id/Apellido"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="40dp">
+                    <TextView
+                        android:text="N. Documento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="N. Documento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="190dp"
+                        android:id="@+id/NDocumento"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="60dp">
+                    <TextView
+                        android:text="Fecha de Nacimiento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Fecha de Nacimiento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="190dp"
+                        android:id="@+id/FechaNacimiento"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="450dp">
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="Telefono movil: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Telefono movil "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/TelefonoMovil"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        android:text="Telefono fijo: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Telefono fijo: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/TelefonoFijo"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="60dp">
+                    <TextView
+                        android:text="Direccion: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Direccion: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/Direccion"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="80dp">
+                    <TextView
+                        android:text="Email: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Email: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/Email"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="100dp">
+                    <TextView
+                        android:text="Fecha de Ingreso: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Fecha de Ingreso: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/FechaIngreso"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="120dp">
+                    <TextView
+                        android:text="Departamento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="18dp"
+                        android:textColor="#0000FF" />
+                    <TextView
+                        android:text="Departamento: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180dp"
+                        android:id="@+id/Departamento"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    <!-- Widget Inserted Conflict | source:large-land, id:__root__ | @+id/textView1 -->
+    </LinearLayout>
+</ScrollView>

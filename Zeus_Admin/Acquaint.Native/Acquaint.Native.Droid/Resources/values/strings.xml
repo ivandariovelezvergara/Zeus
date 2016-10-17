@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Zeus</string>
+  <string name="profilePhotoTransition">profilePhotoTransition</string>
+	
+  <!-- Intent Keys para llegar a los Value de las activity -->
+  <string name="acquaintanceDetailIntentKey">acquaintanceDetailIntentKey</string>
+  <string name="acquaintanceListIntentKey">acquaintanceListIntentKey</string>
+  <string name="InformacionPersonalIntentKey">InformacionPersonalIntentKey</string>
+  <string name="InformesIntentKey">InformesIntentKey</string>
+  <string name="ConsultaIntentKey">ConsultaIntentKey</string>
+  <string name="MenuIntentKey">MenuIntentKey</string>
+
+  <!-- Value de cual activity vengo-->
+  <string name="idChat">idChat</string>
+  <string name="NombreDestinatarioChat" >NombreDestinatarioChat</string>
+  <string name="PerfilContactosActivity">PerfilContactosActivity</string>
+  <string name="MapaActivity">MapaActivity</string>
+  <string name="ChatActivity">ChatActivity</string>
+  <string name="InformesActivity">InformesActivity</string>
+  <string name="TipoInforme">TipoInforme</string>
+</resources>

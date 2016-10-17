@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ad3c96f3f624b479427860fda322532" Name="Diagram1">
+        <EntityTypeShape EntityType="zeusModel.tbl_coordenadas" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeusModel.tbl_departamentos" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeusModel.tbl_grupos" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeusModel.tbl_historial_chat" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeusModel.tbl_informacion_usuarios" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeusModel.tbl_login" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="zeusModel.Relacion_LoginCoordenadas" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.Relacion_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.Relacion_GruposCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.Relacion_GruposEncargados" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.FK__tbl_histo__emiso__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.FK__tbl_histo__recep__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="zeusModel.Relacion_LoginInformacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

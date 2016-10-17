@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+<style>
+    body {
+        position: absolute;
+        background-image: url('../../Content/Imagenes/fondo_3.jpg');
+        background-size: cover;
+        padding: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+</style>
+<script>
+$('#btnBuscar').click(function () {
+    var isChecked = $('input[name=select-industry]').is(':checked');
+    if (!isChecked) {
+        alert('No has seleccionado ninguna placa');
+        return;
+    }
+    else {
+        document.forms['formIdPlacas'].submit();
+    }
+});
+</script>

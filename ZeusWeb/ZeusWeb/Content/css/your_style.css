@@ -1,0 +1,60 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+body.smart-style-4 {
+    font-family: 'Lato', sans-serif;
+}
+a {
+    cursor:pointer;
+}
+inti-input {
+    padding:1px;
+}
+/*Letras tamanio minimo*/
+inti-string-min {
+    font-size:8px;
+}
+body{
+   font-family: 'Oxygen', sans-serif;
+    
+}
+h1, h2, h3, h4 {
+    font-family: 'Oxygen', sans-serif;
+}
+.row_click:hover{
+    cursor:pointer;
+    background-color:#E6E6E6;
+}
+.indicador-grande {
+    font-size:50px
+}
+
+
+/*AngularAnimate*/
+
+
+.sample-show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}

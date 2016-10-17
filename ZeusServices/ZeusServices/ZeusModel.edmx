@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="zeusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_coordenadas">
+          <Key>
+            <PropertyRef Name="ID_Coordenada " />
+          </Key>
+          <Property Name="usr_id" Type="int" Nullable="false" />
+          <Property Name="usr_latitud" Type="decimal" Precision="12" Scale="9" Nullable="false" />
+          <Property Name="usr_longitud" Type="decimal" Precision="12" Scale="9" Nullable="false" />
+          <Property Name="usr_bearing" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="usr_velocidad" Type="decimal" Precision="7" Scale="4" />
+          <Property Name="usr_precision" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="usr_fecha_coordenada" Type="bigint" Nullable="false" />
+          <Property Name="ID_Coordenada " Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usr_direccion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_departamentos">
+          <Key>
+            <PropertyRef Name="ID_Departamento" />
+          </Key>
+          <Property Name="ID_Departamento" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="depar_nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_grupos">
+          <Key>
+            <PropertyRef Name="ID_Grupo" />
+          </Key>
+          <Property Name="ID_Grupo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grp_nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_historial_chat">
+          <Key>
+            <PropertyRef Name="ID_Chat" />
+          </Key>
+          <Property Name="ID_Chat" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chat_emisor" Type="int" Nullable="false" />
+          <Property Name="chat_receptor" Type="int" Nullable="false" />
+          <Property Name="chat_mensaje" Type="varchar(max)" />
+          <Property Name="chat_fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_informacion_usuarios">
+          <Key>
+            <PropertyRef Name="usr_login_ID" />
+          </Key>
+          <Property Name="usr_login_ID" Type="int" Nullable="false" />
+          <Property Name="usr_nombres" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="usr_apellidos" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="usr_direccion" Type="varchar" MaxLength="50" />
+          <Property Name="usr_salario" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="usr_telefonoMovil" Type="varchar" MaxLength="20" />
+          <Property Name="usr_telefonoFijo" Type="varchar" MaxLength="20" />
+          <Property Name="usr_email" Type="varchar" MaxLength="40" />
+          <Property Name="usr_departamento_ID" Type="smallint" Nullable="false" />
+          <Property Name="usr_fotografia" Type="image" />
+          <Property Name="usr_identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="usr_cargo_ID" Type="smallint" Nullable="false" />
+          <Property Name="usr_grupo_encargado_ID" Type="smallint" Nullable="false" />
+          <Property Name="usr_fechanacimiento" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="ID_Login" />
+          </Key>
+          <Property Name="ID_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usr_login" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="usr_password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="usr_fecha_password" Type="bigint" Nullable="false" />
+          <Property Name="usr_fecha_ultimo_ingreso" Type="bigint" />
+          <Property Name="usr_fecha_creacion_usuario" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbl_histo__emiso__628FA481">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_historial_chat" Type="Self.tbl_historial_chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_historial_chat">
+              <PropertyRef Name="chat_emisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_histo__recep__6383C8BA">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_historial_chat" Type="Self.tbl_historial_chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_historial_chat">
+              <PropertyRef Name="chat_receptor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_Departamento">
+          <End Role="tbl_departamentos" Type="Self.tbl_departamentos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_departamentos">
+              <PropertyRef Name="ID_Departamento" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_departamento_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_GruposCargo">
+          <End Role="tbl_grupos" Type="Self.tbl_grupos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grupos">
+              <PropertyRef Name="ID_Grupo" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_cargo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_GruposEncargados">
+          <End Role="tbl_grupos" Type="Self.tbl_grupos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grupos">
+              <PropertyRef Name="ID_Grupo" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_grupo_encargado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_LoginCoordenadas">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_coordenadas" Type="Self.tbl_coordenadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_coordenadas">
+              <PropertyRef Name="usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_LoginInformacion">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_login_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="zeusModelStoreContainer">
+          <EntitySet Name="tbl_coordenadas" EntityType="Self.tbl_coordenadas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_departamentos" EntityType="Self.tbl_departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_grupos" EntityType="Self.tbl_grupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_historial_chat" EntityType="Self.tbl_historial_chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_informacion_usuarios" EntityType="Self.tbl_informacion_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_histo__emiso__628FA481" Association="Self.FK__tbl_histo__emiso__628FA481">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_historial_chat" EntitySet="tbl_historial_chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_histo__recep__6383C8BA" Association="Self.FK__tbl_histo__recep__6383C8BA">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_historial_chat" EntitySet="tbl_historial_chat" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_Departamento" Association="Self.Relacion_Departamento">
+            <End Role="tbl_departamentos" EntitySet="tbl_departamentos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_GruposCargo" Association="Self.Relacion_GruposCargo">
+            <End Role="tbl_grupos" EntitySet="tbl_grupos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_GruposEncargados" Association="Self.Relacion_GruposEncargados">
+            <End Role="tbl_grupos" EntitySet="tbl_grupos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_LoginCoordenadas" Association="Self.Relacion_LoginCoordenadas">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_coordenadas" EntitySet="tbl_coordenadas" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_LoginInformacion" Association="Self.Relacion_LoginInformacion">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zeusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_coordenadas">
+          <Key>
+            <PropertyRef Name="ID_Coordenada_" />
+          </Key>
+          <Property Name="usr_id" Type="Int32" Nullable="false" />
+          <Property Name="usr_latitud" Type="Decimal" Precision="12" Scale="9" Nullable="false" />
+          <Property Name="usr_longitud" Type="Decimal" Precision="12" Scale="9" Nullable="false" />
+          <Property Name="usr_bearing" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="usr_velocidad" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="usr_precision" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="usr_fecha_coordenada" Type="Int64" Nullable="false" />
+          <Property Name="ID_Coordenada_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usr_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.Relacion_LoginCoordenadas" FromRole="tbl_coordenadas" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_departamentos">
+          <Key>
+            <PropertyRef Name="ID_Departamento" />
+          </Key>
+          <Property Name="ID_Departamento" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="depar_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_informacion_usuarios" Relationship="Self.Relacion_Departamento" FromRole="tbl_departamentos" ToRole="tbl_informacion_usuarios" />
+        </EntityType>
+        <EntityType Name="tbl_grupos">
+          <Key>
+            <PropertyRef Name="ID_Grupo" />
+          </Key>
+          <Property Name="ID_Grupo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grp_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_informacion_usuarios" Relationship="Self.Relacion_GruposCargo" FromRole="tbl_grupos" ToRole="tbl_informacion_usuarios" />
+          <NavigationProperty Name="tbl_informacion_usuarios1" Relationship="Self.Relacion_GruposEncargados" FromRole="tbl_grupos" ToRole="tbl_informacion_usuarios" />
+        </EntityType>
+        <EntityType Name="tbl_historial_chat">
+          <Key>
+            <PropertyRef Name="ID_Chat" />
+          </Key>
+          <Property Name="ID_Chat" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chat_emisor" Type="Int32" Nullable="false" />
+          <Property Name="chat_receptor" Type="Int32" Nullable="false" />
+          <Property Name="chat_mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chat_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.FK__tbl_histo__emiso__628FA481" FromRole="tbl_historial_chat" ToRole="tbl_login" />
+          <NavigationProperty Name="tbl_login1" Relationship="Self.FK__tbl_histo__recep__6383C8BA" FromRole="tbl_historial_chat" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_informacion_usuarios">
+          <Key>
+            <PropertyRef Name="usr_login_ID" />
+          </Key>
+          <Property Name="usr_login_ID" Type="Int32" Nullable="false" />
+          <Property Name="usr_nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_apellidos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usr_salario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="usr_telefonoMovil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="usr_telefonoFijo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="usr_email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="usr_departamento_ID" Type="Int16" Nullable="false" />
+          <Property Name="usr_fotografia" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="usr_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_cargo_ID" Type="Int16" Nullable="false" />
+          <Property Name="usr_grupo_encargado_ID" Type="Int16" Nullable="false" />
+          <Property Name="usr_fechanacimiento" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tbl_departamentos" Relationship="Self.Relacion_Departamento" FromRole="tbl_informacion_usuarios" ToRole="tbl_departamentos" />
+          <NavigationProperty Name="tbl_grupos" Relationship="Self.Relacion_GruposCargo" FromRole="tbl_informacion_usuarios" ToRole="tbl_grupos" />
+          <NavigationProperty Name="tbl_grupos1" Relationship="Self.Relacion_GruposEncargados" FromRole="tbl_informacion_usuarios" ToRole="tbl_grupos" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.Relacion_LoginInformacion" FromRole="tbl_informacion_usuarios" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="ID_Login" />
+          </Key>
+          <Property Name="ID_Login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usr_login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_fecha_password" Type="Int64" Nullable="false" />
+          <Property Name="usr_fecha_ultimo_ingreso" Type="Int64" />
+          <Property Name="usr_fecha_creacion_usuario" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tbl_coordenadas" Relationship="Self.Relacion_LoginCoordenadas" FromRole="tbl_login" ToRole="tbl_coordenadas" />
+          <NavigationProperty Name="tbl_historial_chat" Relationship="Self.FK__tbl_histo__emiso__628FA481" FromRole="tbl_login" ToRole="tbl_historial_chat" />
+          <NavigationProperty Name="tbl_historial_chat1" Relationship="Self.FK__tbl_histo__recep__6383C8BA" FromRole="tbl_login" ToRole="tbl_historial_chat" />
+          <NavigationProperty Name="tbl_informacion_usuarios" Relationship="Self.Relacion_LoginInformacion" FromRole="tbl_login" ToRole="tbl_informacion_usuarios" />
+        </EntityType>
+        <Association Name="Relacion_LoginCoordenadas">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_coordenadas" Type="Self.tbl_coordenadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_coordenadas">
+              <PropertyRef Name="usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_Departamento">
+          <End Role="tbl_departamentos" Type="Self.tbl_departamentos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_departamentos">
+              <PropertyRef Name="ID_Departamento" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_departamento_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_GruposCargo">
+          <End Role="tbl_grupos" Type="Self.tbl_grupos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grupos">
+              <PropertyRef Name="ID_Grupo" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_cargo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_GruposEncargados">
+          <End Role="tbl_grupos" Type="Self.tbl_grupos" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grupos">
+              <PropertyRef Name="ID_Grupo" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_grupo_encargado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_histo__emiso__628FA481">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_historial_chat" Type="Self.tbl_historial_chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_historial_chat">
+              <PropertyRef Name="chat_emisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_histo__recep__6383C8BA">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_historial_chat" Type="Self.tbl_historial_chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_historial_chat">
+              <PropertyRef Name="chat_receptor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_LoginInformacion">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_informacion_usuarios" Type="Self.tbl_informacion_usuarios" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="ID_Login" />
+            </Principal>
+            <Dependent Role="tbl_informacion_usuarios">
+              <PropertyRef Name="usr_login_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="zeusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_coordenadas" EntityType="Self.tbl_coordenadas" />
+          <EntitySet Name="tbl_departamentos" EntityType="Self.tbl_departamentos" />
+          <EntitySet Name="tbl_grupos" EntityType="Self.tbl_grupos" />
+          <EntitySet Name="tbl_historial_chat" EntityType="Self.tbl_historial_chat" />
+          <EntitySet Name="tbl_informacion_usuarios" EntityType="Self.tbl_informacion_usuarios" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" />
+          <AssociationSet Name="Relacion_LoginCoordenadas" Association="Self.Relacion_LoginCoordenadas">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_coordenadas" EntitySet="tbl_coordenadas" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_Departamento" Association="Self.Relacion_Departamento">
+            <End Role="tbl_departamentos" EntitySet="tbl_departamentos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_GruposCargo" Association="Self.Relacion_GruposCargo">
+            <End Role="tbl_grupos" EntitySet="tbl_grupos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_GruposEncargados" Association="Self.Relacion_GruposEncargados">
+            <End Role="tbl_grupos" EntitySet="tbl_grupos" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_histo__emiso__628FA481" Association="Self.FK__tbl_histo__emiso__628FA481">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_historial_chat" EntitySet="tbl_historial_chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_histo__recep__6383C8BA" Association="Self.FK__tbl_histo__recep__6383C8BA">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_historial_chat" EntitySet="tbl_historial_chat" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_LoginInformacion" Association="Self.Relacion_LoginInformacion">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_informacion_usuarios" EntitySet="tbl_informacion_usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zeusModelStoreContainer" CdmEntityContainer="zeusEntities">
+          <EntitySetMapping Name="tbl_coordenadas">
+            <EntityTypeMapping TypeName="zeusModel.tbl_coordenadas">
+              <MappingFragment StoreEntitySet="tbl_coordenadas">
+                <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+                <ScalarProperty Name="usr_latitud" ColumnName="usr_latitud" />
+                <ScalarProperty Name="usr_longitud" ColumnName="usr_longitud" />
+                <ScalarProperty Name="usr_bearing" ColumnName="usr_bearing" />
+                <ScalarProperty Name="usr_velocidad" ColumnName="usr_velocidad" />
+                <ScalarProperty Name="usr_precision" ColumnName="usr_precision" />
+                <ScalarProperty Name="usr_fecha_coordenada" ColumnName="usr_fecha_coordenada" />
+                <ScalarProperty Name="ID_Coordenada_" ColumnName="ID_Coordenada " />
+                <ScalarProperty Name="usr_direccion" ColumnName="usr_direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_departamentos">
+            <EntityTypeMapping TypeName="zeusModel.tbl_departamentos">
+              <MappingFragment StoreEntitySet="tbl_departamentos">
+                <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
+                <ScalarProperty Name="depar_nombre" ColumnName="depar_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_grupos">
+            <EntityTypeMapping TypeName="zeusModel.tbl_grupos">
+              <MappingFragment StoreEntitySet="tbl_grupos">
+                <ScalarProperty Name="ID_Grupo" ColumnName="ID_Grupo" />
+                <ScalarProperty Name="grp_nombre" ColumnName="grp_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_historial_chat">
+            <EntityTypeMapping TypeName="zeusModel.tbl_historial_chat">
+              <MappingFragment StoreEntitySet="tbl_historial_chat">
+                <ScalarProperty Name="ID_Chat" ColumnName="ID_Chat" />
+                <ScalarProperty Name="chat_emisor" ColumnName="chat_emisor" />
+                <ScalarProperty Name="chat_receptor" ColumnName="chat_receptor" />
+                <ScalarProperty Name="chat_mensaje" ColumnName="chat_mensaje" />
+                <ScalarProperty Name="chat_fecha" ColumnName="chat_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_informacion_usuarios">
+            <EntityTypeMapping TypeName="zeusModel.tbl_informacion_usuarios">
+              <MappingFragment StoreEntitySet="tbl_informacion_usuarios">
+                <ScalarProperty Name="usr_login_ID" ColumnName="usr_login_ID" />
+                <ScalarProperty Name="usr_nombres" ColumnName="usr_nombres" />
+                <ScalarProperty Name="usr_apellidos" ColumnName="usr_apellidos" />
+                <ScalarProperty Name="usr_direccion" ColumnName="usr_direccion" />
+                <ScalarProperty Name="usr_salario" ColumnName="usr_salario" />
+                <ScalarProperty Name="usr_telefonoMovil" ColumnName="usr_telefonoMovil" />
+                <ScalarProperty Name="usr_telefonoFijo" ColumnName="usr_telefonoFijo" />
+                <ScalarProperty Name="usr_email" ColumnName="usr_email" />
+                <ScalarProperty Name="usr_departamento_ID" ColumnName="usr_departamento_ID" />
+                <ScalarProperty Name="usr_fotografia" ColumnName="usr_fotografia" />
+                <ScalarProperty Name="usr_identificacion" ColumnName="usr_identificacion" />
+                <ScalarProperty Name="usr_cargo_ID" ColumnName="usr_cargo_ID" />
+                <ScalarProperty Name="usr_grupo_encargado_ID" ColumnName="usr_grupo_encargado_ID" />
+                <ScalarProperty Name="usr_fechanacimiento" ColumnName="usr_fechanacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_login">
+            <EntityTypeMapping TypeName="zeusModel.tbl_login">
+              <MappingFragment StoreEntitySet="tbl_login">
+                <ScalarProperty Name="ID_Login" ColumnName="ID_Login" />
+                <ScalarProperty Name="usr_login" ColumnName="usr_login" />
+                <ScalarProperty Name="usr_password" ColumnName="usr_password" />
+                <ScalarProperty Name="usr_fecha_password" ColumnName="usr_fecha_password" />
+                <ScalarProperty Name="usr_fecha_ultimo_ingreso" ColumnName="usr_fecha_ultimo_ingreso" />
+                <ScalarProperty Name="usr_fecha_creacion_usuario" ColumnName="usr_fecha_creacion_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

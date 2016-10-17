@@ -1,0 +1,238 @@
+﻿@model IEnumerable<ZeusWeb.Models.ActualizarModels>
+
+<link href="~/css/List.css" rel="stylesheet" />
+@*<script src="~/Scripts/Menu/Menu.js"></script>*@
+<link href="~/css/MenuStyle.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btnActualizar').submit(function () {
+            if ($(this).valid()) {
+                $.ajax({
+                    url: "/Actualizar/ActualizarItem",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (response) {
+                        alert("error");
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+
+<div id="btnCerrarLista" title="Cerrar" style="color:#0083EE; font-size:25px; cursor:pointer; width:25px; margin-top:65px;" class="glyphicon glyphicon-remove-circle"></div>
+<div id="screenEstate" class="screenEstate">
+    <div id="navigation-bar2" class="navigation-bar2">
+        <div class="tabContent" id="tab1">
+            <ul>
+                @foreach (var item in Model)
+                {
+                <li>
+                    <input type="hidden" id="hola" value="@item.IDUSUARIO" style="display:none;"/> 
+                    <span data-toggle="modal" id="@item.IDUSUARIO" data-target="#modal1" class="contactIcon"><img src="data:image/jpg;base64,@(Convert.ToBase64String(item.imagen))" /></span>
+                    <span class="contactDetails">@item.FullName</span>
+                    <span class="otherDetails">@item.cargoNombre</span>
+                    <span class="otherDetails phoneNo">@item.celular</span>
+                </li>
+                }
+                </ul>
+            </div>
+        <div id="divActualizar" class="navbox2">
+            <div id="formulario" style="text-align:center;">
+                <div class="contact">
+                    <div class="contenedor-formulario">
+                        @using (Html.BeginForm("ActualizarItem", "Actualizar", FormMethod.Post, new { @name = "formularioCrear", @class = "formulario", enctype = "multipart/form-data" }))
+                        {
+                            <div class="wrap">
+                                <div>
+                                    <div style="width:100%; padding-top:40px;">
+                                        <div class="input-group">
+                                            <input type="image" id="fotoA" name="fotoA" style="width:180px; height:180px; background-color:#D2D8FF; border-radius: 100px; padding: 3px; border:none;">
+                                        </div>
+                                    </div>
+                                    <div id="buscar" class="input-group" style="width:50%; margin-bottom:0px;">
+                                        <span id="filename">Sube tu foto</span>
+                                        <label id="buscar" for="foto" style="color:white">buscar <input type="file" id="foto" /> @*@Html.TextBoxFor(m => m.fotoUsuario, new { type = "file", id = "foto" })*@</label>
+                                    </div>
+                                    <div style="width:100%; margin-top:10px;">
+                                        <div class="input-group">
+                                            <input type="text" id="loginA" name="loginA">
+                                            <label class="label active" for="login">Usuario:</label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;">
+                                        <div class="input-group">
+                                            <input type="text" id="nombresA" name="nombresA">
+                                            <label class="label active" for="nombre">Nombres:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="apellidosA" name="apellidosA">
+                                            <label class="label active" for="apellidos">Apellidos:</label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;">
+                                        <div class="input-group">
+                                            <input type="email" id="correoA" name="correoA">
+                                            <label class="label active" for="correo">Correo:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="identificacionA" name="identificacionA">
+                                            <label class="label active" for="identificacion">Identificación:</label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;">
+                                        <div class="input-group">
+                                            <input type="text" id="telefonoA" name="telefonoA">
+                                            <label class="label active" for="telefono">Teléfono:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="celularA" name="celularA">
+                                            <label class="label active" for="celular">Celular:</label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;">
+                                        <div class="input-group">
+                                            <input type="text" id="direccionA" name="direccionA">
+                                            <label class="label active" for="direccion">Dirección:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="date" id="fechaNacimientoA" name="fechaNacimientoA" class="datepicker">
+                                            <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" id="passA" name="passA">
+                                        <label class="label active" for="pass">Contraseña:</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" id="repPassA" name="repPassA">
+                                        <label class="label active" for="pass2">Repetir Contraseña:</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="cargoA" name="cargoA">
+                                        <label class="label active" for="cargo">Cargo:</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="salarioA" name="salarioA">
+                                        <label class="label active" for="salario">Salario:</label>
+                                    </div>
+                                    <div style="width:100%;">
+                                        <div class="input-group">
+                                            <div class="styled-select blue semi-square" style="margin-top: 10px;">
+                                                <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="grupo">Grupo:</label>
+                                                <select name="grupo" id="grupo">
+                                                    <option value="1">Empleado</option>
+                                                    <option value="2">Nada</option>
+                                                    <option value="3">Pirobo Master</option>
+                                                    <option value="4">Supervisor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="styled-select blue semi-square" style="margin-top: 10px;">
+                                                <label style="top:-12px; font-size:12px; line-height:12px; color: #B6B6B6; left: 0; position: absolute; margin-left: 15px;" for="departamento">Departamento:</label>
+                                                <select name="departamento" id="departamento">
+                                                    <option value="1">Produccion</option>
+                                                    <option value="2">Encargados</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="input-group radio">
+                                        <input type="radio" name="sexo" id="hombre" value="Hombre">
+                                        <label for="hombre">Hombre</label>
+                                        <input type="radio" name="sexo" id="mujer" value="Mujer">
+                                        <label for="mujer">Mujer</label>
+                                    </div>
+                                    <div class="input-group checkbox">
+                                        <input type="checkbox" name="terminos" id="terminos" value="true">
+                                        <label for="terminos">Acepto los Terminos y Condiciones</label>
+                                    </div>*@
+
+                                    <input type="submit" id="btnActualizar" value="Enviar" style="margin-bottom: 20px;">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //tabs
+    $('.tabContent').removeClass('activeTab');
+    $('#tab1').addClass('activeTab');
+    $('.tabs a').click(function () {
+        $('.tabs a').removeClass('active');
+        $(this).addClass('active');
+        var currentTab = $(this).attr('href');
+        $('.tabContent').removeClass('activeTab');
+        $(currentTab).addClass('activeTab');
+        return false;
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnCerrarLista').click(function () {
+            $('#screenEstate').css({ 'display': 'none' });
+            $('#btnCerrarLista').css({ 'display': 'none' });
+        });
+    });
+</script>
+
+<script>
+    (function () {
+        $(document).ready(function () {
+            $('.contactIcon').click(function () {
+                //alert($(this).attr("id"));
+
+                $.ajax({
+                    url: "/Actualizar/getInfoPersona",
+                    type: "POST",
+                    data: { idUsuario: $(this).attr("id") },
+
+                    success: function (data) {
+                        $('#screenEstate').css({ 'visibility': 'hidden', 'margin-top': '-220px', 'overflow': 'visible' });
+                        $('#navigation-bar2').toggleClass('navbox2-open');
+                        $("#loginA").val(data[0].login);
+                        $("#nombresA").val(data[0].nombres);
+                        $("#apellidosA").val(data[0].apellidos);
+                        $("#correoA").val(data[0].correo);
+                        $("#identificacionA").val(data[0].identificacion);
+                        $("#telefonoA").val(data[0].telefono);
+                        $("#celularA").val(data[0].celular);
+                        $("#direccionA").val(data[0].direccion);
+                        $("#fechaNacimientoA").val(data[0].fechaNacimiento);
+                        $("#passA").val("password");
+                        $("#repPassA").val("password");
+                        $("#cargoA").val(data[0].cargo);
+                        $("#salarioA").val(data[0].salario);
+                        $("#fotoA").attr("src", "data:image/jpg;base64," + data[0].fotoA);
+                    },
+                    error: function (response) {
+                        alert("error");
+                    }
+                });
+            });
+            return $(document).on('click', function (e) {
+                var $target;
+                $target = $(e.target);
+                if (!$target.closest('.navbox2').length && !$target.closest('#navbox-trigger2').length) {
+                    $('#screenEstate').css({ 'visibility': 'visible', 'margin-top': '0px', 'overflow-y': 'auto', 'overflow-x' : 'hidden' });
+                    $('#navigation-bar2').removeClass('navbox2-open');
+                }
+            });
+        });
+    }.call(this));
+</script>

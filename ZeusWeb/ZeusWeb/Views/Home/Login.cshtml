@@ -1,0 +1,28 @@
+﻿@model ZeusWeb.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site__container" style="margin-top:10%;">
+    <div class="grid__container">
+        @using (Html.BeginForm("VerificarLogin", "Home", FormMethod.Post, new { @class = "form form--login", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <img src="~/img/LogoDetektorLogin.png" style="width:100%; margin-bottom:20px;" />
+            <div class="form__field">
+                <label class="fontawesome-user" for="login__username"><span class="hidden">Usuario</span></label>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form__input", placeholder = "Usuario", @id = "login__username", required = true })
+            </div>
+            <div class="form__field">
+                <label class="fontawesome-lock" for="login__password"><span class="hidden">Contraseña</span></label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form__input", placeholder = "Contraseña", @id = "login__password", required =true })
+            </div>
+            <div class="form__field">
+                <input type="submit" name="submitButton" value="Ingresar">
+            </div>
+        }
+        <p class="text--center">No es un Miembro? <a href="#">Registrarse</a> <span class="fontawesome-arrow-right"></span></p>
+    </div>
+</div>
